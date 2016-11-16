@@ -1,0 +1,145 @@
+﻿/*body {
+  /* Uncomment this to enable scrolling and zooming
+  touch-action: manipulation;
+  
+}*/
+
+
+body {
+  background-image: url("http://www.mortgage-evolution.com.au/wp-content/uploads/2014/11/brushed-silver-metallic-background-website1.jpg");
+  background-size: cover;
+  
+}
+
+#container {
+  width: 500px;
+  height: 300px;
+  background-color: tan;
+  left: 0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  position: fixed;
+  border: 4px solid cadetblue;
+  box-shadow:  -1px 1px cadetblue,
+         -2px 2px skyblue,
+         -3px 3px skyblue,
+         -4px 4px skyblue,
+         -5px 5px skyblue;
+}
+#blocks {
+  position:absolute;
+  left:50%; 
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.blinker {
+  height: 125px;
+  width:50px;
+  display:inline-block;
+  border-radius: 5%;
+}
+
+#functionBar {
+  position:relative;
+  text-align:center; 
+  width: 400px;
+  height:;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 20px;
+  
+}
+
+.function {
+  display:inline-block;
+  margin-top: 5%;
+}
+
+#round {
+  font-size: 40px;
+  font-family: "shrikhand";
+}
+
+
+#red {
+  background-color: firebrick;
+}
+
+#green {
+  background-color: forestgreen;
+}
+
+#yellow {
+  background-color: darkgoldenrod;
+}
+
+#blue {
+  background-color: navy;
+}
+
+.highlight {
+  opacity: 0.2;
+}
+
+.hover:hover {
+   border: 1px solid black;
+}
+
+.hover:active {
+  padding: 2px;
+    border: 2px solid black;
+    box-shadow:  -1px 1px azure,
+         -2px 2px azure,
+         -3px 3px azure,
+         -4px 4px azure,
+         -5px 5px azure;
+  
+}
+
+#start {
+  background-color: #00D800;
+  position: absolute;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  bottom:0;
+  left:35%;
+}
+
+#reset {
+  position:absolute;
+  background-color:#F80000 ;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  bottom:0;
+  right:45.75%;
+}
+
+#strict {
+  position:absolute;
+  background-color:silver ;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  bottom:0;
+  right:35%;
+  text-align:center;
+  line-height: 40px;
+}
+
+#strict span{
+  display: inline-block;
+  vertical-align:middle;
+  line-height: normal;
+  font-size: 10px;
+  font-family: "shrikhand";
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+}
