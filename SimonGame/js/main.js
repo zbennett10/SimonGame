@@ -91,7 +91,8 @@ $(document).ready(function () {
 
     var check = function () {
         if (human.length === 20 && human[human.length - 1] === memory[memory.length - 1]) {
-            alert("You Win! Good job!");
+            var winMessage = Windows.UI.Popups.MessageDialog("You Win! Good Job!");
+            winMessage.showAsync();
             resetGame();
             return;
         }
@@ -99,12 +100,12 @@ $(document).ready(function () {
         for (var i = 0; i < human.length; i++) {
             if (human[i] !== memory[i]) {
                 if (strictStatus === true) {
-                    alert("Wrong Choice!");
+                    onWrongChoice();
                     resetGame();
                     return;
                 }
                 else {
-                    alert("Wrong Choice!");
+                    onWrongChoice();
                     human = [];
                     blinkSeries(sequence);
                 }
@@ -122,9 +123,20 @@ $(document).ready(function () {
         }
     }
 
+    //displays message to user if they try to start the game before pressing the start button
+    var onPrematureStart = function () {
+        var dialog = new Windows.UI.Popups.MessageDialog("Please click the green button to begin.");
+        dialog.showAsync();
+    }
+
+    var onWrongChoice = function() {
+        var dialog = new Windows.UI.Popups.MessageDialog("Wrong Choice!");
+        dialog.showAsync();
+    }
+
     red.click(function () {
         if (!startStatus) {
-            alert("Please click the green button to begin.");
+            onPrematureStart();       
             return;
         }
         redSound.play();
@@ -134,7 +146,7 @@ $(document).ready(function () {
 
     green.click(function () {
         if (!startStatus) {
-            alert("Please click the green button to begin.");
+            onPrematureStart();
             return;
         }
         greenSound.play();
@@ -144,7 +156,7 @@ $(document).ready(function () {
 
     yellow.click(function () {
         if (!startStatus) {
-            alert("Please click the green button to begin.");
+            onPrematureStart();
             return;
         }
         yellowSound.play();
@@ -154,7 +166,7 @@ $(document).ready(function () {
 
     blue.click(function () {
         if (!startStatus) {
-            alert("Please click the green button to begin.");
+            onPrematureStart();
             return;
         }
         blueSound.play();
