@@ -3,8 +3,7 @@
 // Your code here!
 $(document).ready(function () {
 
-    //add music to buton presses and blinks
-
+   //sounds for button blinks
     var redSound = document.createElement('audio');
     redSound.setAttribute('src', 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
 
@@ -39,22 +38,37 @@ $(document).ready(function () {
         return Math.floor(Math.random() * 4) + 1;
     };
 
-    var resetGame = function () {
+
+    //reset functions
+    var resetArrays = function () {
         sequence = [];
         memory = [];
         human = [];
+    }
+
+    var resetGlobVar = function () {
         round = 1;
+        strictStatus = false;
+        startStatus = false;
+    }
+
+    var resetElements = function () {
+        strict.text("Strict: Off");
         roundDisplay.text("Round: 1");
         red.removeClass("highlight");
         green.removeClass("highlight");
         yellow.removeClass("highlight");
         blue.removeClass("highlight");
-        strictStatus = false;
-        strict.text("Strict: Off");
-        startStatus = false;
+    }
+
+    var resetGame = function () {
+        resetArrays();
+        resetGlobalVar();
+        resetElements();
     }
 
     //credit for this function goes to https://codeplanet.io/building-simon-says-javascript/
+    //iterates through sequence, blinking each block
     var blinkSeries = function (elementArr) {
         var i = 0;
         var interval = setInterval(function () {
@@ -64,21 +78,19 @@ $(document).ready(function () {
                 clearInterval(interval);
             }
         }, 600);
-
     }
 
+    //blinks a block
     const lightUp = block => {
-
         soundArr[blinkArr.indexOf(block)].play();
         block.addClass('highlight');
         setTimeout(function () {
             block.removeClass('highlight');
         }, 300);
-
     }
 
     var check = function () {
-        if (human.length == 20 && memory.length == 20 && human[human.length - 1] === memory[memory.length - 1]) {
+        if (human.length === 20 && human[human.length - 1] === memory[memory.length - 1]) {
             alert("You Win! Good job!");
             resetGame();
             return;
@@ -91,7 +103,7 @@ $(document).ready(function () {
                     resetGame();
                     return;
                 }
-                if (strictStatus === false) {
+                else {
                     alert("Wrong Choice!");
                     human = [];
                     blinkSeries(sequence);
@@ -100,7 +112,6 @@ $(document).ready(function () {
         }
 
         if (human.length === memory.length && human[human.length - 1] === memory[memory.length - 1]) {
-
             human = [];
             round++;
             roundDisplay.text("Round: " + round.toString());
