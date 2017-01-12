@@ -1,9 +1,8 @@
 ﻿/// <reference path="../Scripts/jquery-3.1.1.intellisense.js" />
 /// <reference path="../Scripts/jquery-3.1.1.min.js" />
-// Your code here!
 $(document).ready(function () {
 
-   //sounds for button blinks
+   //sounds for button blinks -------------------------------------------------
     var redSound = document.createElement('audio');
     redSound.setAttribute('src', 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
 
@@ -15,6 +14,8 @@ $(document).ready(function () {
 
     var blueSound = document.createElement('audio');
     blueSound.setAttribute('src', 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+   
+   //Globals ------------------------------------------------------------------
 
     var red = $("#red");
     var green = $("#green");
@@ -34,6 +35,7 @@ $(document).ready(function () {
     var strictStatus = false;
     var startStatus = false;
 
+   //helper functions -----------------------------------------------------------
     var randIndex = function () {
         return Math.floor(Math.random() * 4) + 1;
     };
@@ -67,7 +69,7 @@ $(document).ready(function () {
         resetElements();
     }
 
-    //credit for this function goes to https://codeplanet.io/building-simon-says-javascript/
+    //part credit for this function goes to https://codeplanet.io/building-simon-says-javascript/
     //iterates through sequence, blinking each block
     var blinkSeries = function (elementArr) {
         var i = 0;
@@ -89,6 +91,7 @@ $(document).ready(function () {
         }, 300);
     }
 
+    //checks for a win/match
     var check = function () {
         if (human.length === 20 && human[human.length - 1] === memory[memory.length - 1]) {
             var winMessage = Windows.UI.Popups.MessageDialog("You Win! Good Job!");
@@ -128,12 +131,14 @@ $(document).ready(function () {
         var dialog = new Windows.UI.Popups.MessageDialog("Please click the green button to begin.");
         dialog.showAsync();
     }
-
+     
+    //displays message to user if they pick the wrong choice
     var onWrongChoice = function() {
         var dialog = new Windows.UI.Popups.MessageDialog("Wrong Choice!");
         dialog.showAsync();
     }
 
+    //user induced event handlers------------------------------------------------------------------------
     red.click(function () {
         if (!startStatus) {
             onPrematureStart();       
